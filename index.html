@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"  manifest="/offline.manifest">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<script type="text/javascript">
+		function setViewport( viewportWidth ) {
+			var meta = null,
+				head,
+				content;
+		
+			// Create a meta tag
+			meta = document.createElement( "meta" );
+			if ( meta ) {
+				meta.name = "viewport";
+				content = [ "width=", viewportWidth, ", user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" ].join( "" );
+				if ( ! isNaN( viewportWidth ) ) {
+					// Fix scale to 1.0, if viewport width is set to fixed value.
+					// NOTE: Works wrong in Tizen browser!
+					//content = [ content, ", initial-scale=1.0, maximum-scale=1.0" ].join( "" );
+				}
+				meta.content = content;
+				head = document.getElementsByTagName( 'head' ).item( 0 );
+				head.insertBefore( meta, head.firstChild );
+			}
+			//alert(viewportWidth);
+			return viewportWidth;
+		};
+		
+		var viewportWidth = Math.min(document.documentElement.clientWidth, document.documentElement.clientHeight);
+		if (navigator.userAgent.match('iPhone') != null)
+			viewportWidth = 320;
+		if (navigator.userAgent.match('Android') != null)
+			viewportWidth = 480;
+	
+		viewportWidth = setViewport( viewportWidth );	
+
+	</script>
+	
+    <script src="js/libs/jquery-1.7.2.min.js"></script>
+    <script src="js/libs/jquery.mobile.just-touch.js"></script>
+    <script src="js/libs/iscroll-min.js"></script>
+    
+	<script src="js/MathUtils.js"></script>
+	<script src="js/MotionEvent.js"></script>
+	<script src="js/Color.js"></script>
+	<script src="js/Font.js"></script>
+	<script src="js/Graphics.js"></script>
+	<script src="js/JImage.js"></script>
+	<script src="js/Paint.js"></script>
+	<script src="js/Point.js"></script>
+	<script src="js/Util.js"></script>
+	<script src="js/Random.js"></script>
+	<script src="js/System.js"></script>
+	<script src="js/Sprite.js"></script>
+	<script src="js/HTML5AudioPlayer.js"></script>
+	
+	<!-- <script src="js/Logic.js"></script>-->
+	<script src="js/Wheel.js"></script>
+	<script src="js/Game.js"></script>
+	<script src="js/GameMain.js"></script>
+	<script src="Roulette.js"></script>
+	<script src="js/soundmanager2.js"></script>
+	<script src="js/inlineplayer.js"></script>
+	<script src="js/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+    
+</head>
+
+<body onload="Roulette.init()">
+	<div id="container">
+		<div id="bet_back"></div>
+		<div id="rot_back"></div>
+		<div id="game_area"></div>
+		<div id="winnumber_area">
+			<div id="winnumber_1" class="winbutton red"><span>12</span></div>
+			<div id="winnumber_2" class="winbutton black"><span>12</span></div>
+			<div id="winnumber_3" class="winbutton red"><span>12</span></div>
+			<div id="winnumber_4" class="winbutton black"><span>12</span></div>
+			<div id="winnumber_5" class="winbutton red"><span>12</span></div>
+			<div id="winnumber_6" class="winbutton black"><span>12</span></div>
+			<div id="winnumber_7" class="winbutton red"><span>12</span></div>
+			<div id="winnumber_8" class="winbutton black"><span>12</span></div>
+		</div>
+		<div id="winnumber_sidebar">
+			<div id="winside_1" class="winbutton red"><span>12</span></div>
+			<div id="winside_2" class="winbutton black"><span>12</span></div>
+			<div id="winside_3" class="winbutton red"><span>12</span></div>
+			<div id="winside_4" class="winbutton black"><span>12</span></div>
+			<div id="winside_5" class="winbutton red"><span>12</span></div>
+			<div id="winside_6" class="winbutton black"><span>12</span></div>
+			<div id="winside_7" class="winbutton red"><span>12</span></div>
+			<div id="winside_8" class="winbutton black"><span>12</span></div>
+			<div id="winside_9" class="winbutton red"><span>12</span></div>
+			<div id="winside_10" class="winbutton black"><span>12</span></div>
+			<div id="winside_11" class="winbutton red"><span>12</span></div>
+			<div id="winside_12" class="winbutton black"><span>12</span></div>
+			<div id="winside_13" class="winbutton red"><span>12</span></div>
+			<div id="winside_14" class="winbutton black"><span>12</span></div>
+			<div id="winside_15" class="winbutton red"><span>12</span></div>
+			<div id="winside_16" class="winbutton black"><span>12</span></div>
+			<div id="winside_17" class="winbutton red"><span>12</span></div>
+			<div id="winside_18" class="winbutton black"><span>12</span></div>
+			<div id="winside_19" class="winbutton red"><span>12</span></div>
+			<div id="winside_20" class="winbutton black"><span>12</span></div>
+		</div>
+		<div id="method_select">
+			<img class="american" id="american" src="img/american_normal.png">
+			<img class="european active" id="european" src="img/european_active.png">
+			<img class="even" id="even" src="img/even_normal.png">
+		</div>
+		<img id="wheel" src="img/wheel_normal.png">
+		<img id="option" src='img/OPTION_normal.png'>
+		<img id="help" src="img/help_normal.png">
+		<div id="wheel_show"></div>
+		<div id="win_history"></div>
+		<div id="option_show">
+			<var id="version">V.1.0.0.0</var>
+			<div id="option_title"><label>サウンド設定</label></div>
+			<label id="music_label">BGMミュージック</label>
+			<div id="music_select">
+				<select id="select">
+					<option value="background.mp3">background.mp3</option>
+					<option value="Crossroads.mp3">crossroads.mp3</option>
+					<option value="Track02.mp3">Track02.mp3</option>
+				</select>
+			</div>
+			<label id="music_setting">BGM Mixer</label>
+			<!-- <input type="range" value="50" name="range" min=0 max=100 step=1/>adf -->
+			<label id="effect_set">Effect Mixer</label>
+			<input type="checkbox" name="repeat" id="repeat" value="repeat" />
+			<label id="label_repeat">Repeat All</label>
+			<div id="draggable1" class="ui-draggable ui-draggable-handle"></div>
+			<div id="volume1"></div>
+			<div id="draggable2" class="ui-draggable ui-draggable-handle"></div>
+			<div id="volume2"></div>
+			<div id="back_setting"></div>
+			<div id="effect_setting"></div>
+			<div id="option_ok"></div>
+		</div>
+		<div id="button_area">
+			<div id="chip_area">
+				<div class="chip" id="chip_1"><span class="chipamount">1</span></div>
+				<div class="chip" id="chip_2"><span class="chipamount">5</span></div>
+				<div class="chip" id="chip_3"><span class="chipamount">10</span></div>
+			</div>
+			<div id="help_show">
+				<div id="help_letter"></div>
+				<div class="change"></div>
+			</div>
+			<img class="button" id="btn_spin" src="img/button_spin_disable.png" class="disable">
+			<img class="button" id="btn_rebet" src="img/button_rebet_disable.png" class="disable">
+			<img class="button" id="btn_regame" src="img/button_regame_disable.png" class="disable">
+			<img class="button" id="btn_auto_regame" src="img/button_autoregame_disable.png" class="disable">
+			<img class="button" id="btn_return" src="img/button_return_disable.png" class="disable">
+			<img class="button" id="btn_clear" src="img/button_clearbet_disable.png" class="disable">
+		</div>
+		<div id="result_area" class="red">
+			<span id="result_number">25</span>
+			<br>
+			<span id="result_status">NO WIN</span>
+		</div>
+		<div id="win_popup">
+			<span id="win_title">YOU WIN</span>
+			<span id="win_amount">0.6</span>
+		</div>
+		<div id="loading_area">
+			<div id="loading_text">Loading ...</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+        // whenever the window's size is changed, call it.
+      	window.onresize = Roulette.onResize;
+        window.onorientationchange = Roulette.onResize;
+        var url = window.location.href;
+        /\/index.html/g.test(url);
+        var left = RegExp["$`"];
+        console.log(left); // file:///F:/roulette1.6
+        /file:\/\/\//.test(left);
+        console.log(RegExp["$'"]); // F:/roulette1.6
+        console.log(navigator);
+    </script>
+
+
+</body>
+
+</html>

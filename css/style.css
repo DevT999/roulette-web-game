@@ -1,0 +1,650 @@
+* {
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+
+body, ul, li {
+	padding:0;
+	margin:0;
+	border:0;
+}
+
+body {
+	overflow: hidden;
+	width: 320px;
+	height: 230px;
+	font-size: 12px;
+	font-family: helvetica;
+	background: black !important;
+	
+	/*
+	background: -webkit-linear-gradient(top, #4b9c01 0%, #0b4c02 100%) !important;
+    background: -ms-linear-gradient(top, #4b9c01 0%, #0b4c02 100%) !important;
+    background: -moz-linear-gradient(top, #4b9c01 0%, #0b4c02 100%) !important;
+    */
+}
+
+@font-face
+{
+	font-family: Bebas;
+	src: url('../font/bebas.ttf');
+}
+
+@font-face
+{
+	font-family: BoldDot;
+	src: url('../font/bold_dot_digital-7.ttf');
+}
+
+#container {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow:hidden;
+	position: absolute;
+	width: 960px !important;
+	height: 600px !important;
+}
+
+#bet_back {
+	position: absolute;
+	width: 960px;
+	height: 600px;
+	background-image: url('../img/betting_back_1.jpg');
+	background-size: 100% 100%;
+}
+
+#rot_back {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/rotate_back_1.png');
+	background-size: 100% 100%;
+}
+
+#game_area {
+	margin: auto;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#winnumber_area {
+	display: none;
+	position: absolute;
+	left: 24px;
+/*	top: 482px;
+	width: 242px;
+	height: 22px;*/
+	top: 485px;
+	width: 142px;
+	height: 23px;
+}
+
+#winnumber_sidebar {
+	display: none;
+	position: absolute;
+	top: 228px;
+	left: 15px;
+	width: 121px;
+	height: 354px;
+}
+
+.winbutton {
+	float: left;
+	width: 35px;
+	height: 22px;
+	background-size: 100% 100%;
+	text-align: center;
+	color: white;
+}
+
+#winnumber_sidebar .winbutton {
+	position: absolute;
+	width: 35px;
+	height: 32px;
+	background-size: 100% 100%;
+	text-align: center;
+	color: white;
+	z-index: 1000000000000000001;
+}
+
+#winnumber_sidebar .winbutton span {
+	font-size: 18px;
+	position: relative;
+	top: 8px;
+}
+
+.winbutton.red {
+	background-image: url('../img/winnumber_red.png');
+}
+
+.winbutton.black {
+	background-image: url('../img/winnumber_black.png');
+}
+
+.winbutton.green {
+	background-image: url('../img/winnumber_green.png');
+}
+
+.winbutton span {
+	position: relative;
+	top: 4px;
+}
+
+#winnumber_1,
+#winnumber_5
+{
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+#winnumber_8,
+#winnumber_4 {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	margin-right: 0px !important;
+}
+
+#result_area {
+	display: none;
+	position: absolute;
+	left: 16px;
+	top: 13px;
+	width: 120px;
+	height: 147px;
+	background-size: 100% 100%;
+	text-align: center;
+	color: white;
+	text-shadow: 3px 3px 1px #600;
+	font-family: Bebas;
+}
+
+#result_area.red {
+	background-image: url('../img/resultpanel_red.png');
+}
+
+#result_area.green {
+	background-image: url('../img/resultpanel_green.png');
+}
+
+#result_area.black {
+	background-image: url('../img/resultpanel_black.png');
+}
+
+#result_number {
+	margin-top: 15px;
+	display: inline-block;
+	font-size: 60px;
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(170,170,170,1)));
+}
+
+#result_status {
+	font-size: 24px;
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(170,170,170,1)));
+}
+
+#method_select {
+	position: absolute;
+	left: 182px;
+	top: 455px;
+	width: 91px;
+	height: 150px;
+}
+
+#american {
+	position: absolute;
+	left:0;
+	top:26px;
+	width:90px;
+	height:44px;
+	background-repeat: none;
+}
+
+/*#american.active {
+	background-image: url('../img/american_active.png');	
+}*/
+
+#european {
+	position: absolute;
+	left:0;
+	top:65px;
+	width:90px;
+	height:44px;
+	/*background-image: url('../img/european_normal.png');*/
+	background-repeat: none;
+}
+
+#european.active {
+	/*background-image: url('../img/european_active.png');*/
+}
+
+#even {
+	position: absolute;
+	left:0;
+	top:104px;
+	width:90px;
+	height:44px;
+	/*background-image: url('../img/even_normal.png');*/
+	background-repeat: none;
+}
+
+#even.active {
+	/*background-image: url('../img/even_active.png');*/
+}
+
+#wheel {
+	position: absolute;
+	left: 272px;
+	top: 480px;
+	width: 90px;
+	height: 45px;
+	/*background-image: url('../img/wheel_normal.png');*/
+}
+
+/*#wheel.disable {
+	background-image: url('../img/wheel_disable.png');
+}
+
+#wheel.disable:active {
+	background-image: url('../img/wheel_disable.png');
+}
+
+#wheel:active {
+	background-image: url('../img/wheel_hover.png');
+}*/
+
+#option {
+	position: absolute;
+	left: 272px;
+	top: 520px;
+	width: 90px;
+	height: 45px;
+	/*background-image: url('../img/OPTION_normal.png');*/
+}
+
+#help {
+	position: absolute;
+	left: 272px;
+	top: 559px;
+	width: 90px;
+	height: 45px;
+	/*background-image: url('../img/help_normal.png');*/
+}
+
+/*#help.active {
+	background-image: url('../img/help_hover.png');
+}*/
+
+#wheel_show {
+	position: absolute;
+	width: 398px;
+	height: 390px;
+	left: 292px;
+	top: 35px;
+	display: none;
+	background-image: url('../img/look_thru_1.png');
+	z-index: 100000000;
+}
+
+#win_history {
+	position: absolute;
+	width: 126px;
+	height: 402px;
+	left: 168px;
+	top: 35px;
+	display: none;
+	background-image: url('../img/win_history.png');
+	z-index: 100000001;
+}
+
+#option_title {
+	position: absolute;
+	left:230px;
+	top: 20px;
+	width: 100px;	
+}
+
+#version {
+	color: red;
+	position: absolute;
+	right: 30px;
+	top: 25px;
+}
+
+label {
+	color:black;
+	/*color:#ffdb00;*/
+	font-size: 15px;
+	position: absolute;
+}
+
+label#music_label {
+	left: 40px;
+	top: 51px;
+}
+
+label#music_setting {
+	left: 40px;
+	top: 94px;
+}
+
+label#effect_set {
+	left: 40px;
+	top: 142px;
+}
+
+#option_show {
+	position: absolute;
+	width: 545px;
+	height: 306px;
+	left: 212px;
+	top: 120px;
+	display: none;
+	background-image: url('../img/OPTION_board.png');
+	z-index: 100000000;
+	overflow: auto;
+}
+
+/*#option_show #select {
+	position: absolute;
+	left: 260px;
+	top: 57px;
+	font-size: 20px;
+	background: #e89bba;
+	cursor: pointer;
+}*/
+option {
+	background: white;
+	font-size: 10px;
+}
+
+#back_setting {
+	position: absolute;
+	left: 144px;
+	top: 88px;
+	width: 36px;
+	height: 32px;
+	background-image: url('../img/music_on.png');
+	cursor: pointer;
+}
+
+#effect_setting {
+	position: absolute;
+	left: 144px;
+	top: 136px;
+	width: 36px;
+	height: 32px;
+	background-image: url('../img/music_on.png');
+	cursor: pointer;
+}
+
+input[name='repeat'] {
+	position: absolute;
+	left: 292px;
+	top: 51px;
+}
+
+#label_repeat {
+	left: 326px;
+	top: 51px;
+}
+
+#draggable1 {
+	position: absolute;
+	left: 250px;
+	top: 95px;
+	width: 6px;
+	height: 19px;
+	background-image: url('../img/volume_button.png');
+	z-index: 100;
+}
+
+#volume1 {
+	position: absolute;
+	height: 10px;
+	left: 205px;
+	top:101px;
+	background-image: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #a91212);
+ 	background-image:    -moz-linear-gradient(top, hsl(0, 80%, 70%), #a91212);
+}
+
+#draggable2 {
+	position: absolute;
+	left: 250px;
+	top: 142px;
+	width: 6px;
+	height: 19px;
+	background-image: url('../img/volume_button.png');
+	z-index: 100;
+}
+
+#volume2 {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 205px;
+	top:148px;
+	background-image: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #a91212);
+ 	background-image:    -moz-linear-gradient(top, hsl(0, 80%, 70%), #a91212);
+}
+
+#option_ok {
+	position: absolute;
+	left: 300px;
+	top: 200px;
+	width: 86px;
+	height: 32px;
+	background-image: url('../img/OPTION_ok_normal.png');
+	cursor: pointer;
+}
+
+#option_ok:active {
+	background-image: url('../img/OPTION_ok_hover.png');
+}
+
+#chip_area {
+	pointer-events: none;
+	position: absolute;
+	left: 334px;
+	top: 498px;
+	width: 250px;
+	height: 100px;
+}
+
+.chip {
+	pointer-events: none;
+	position: absolute;
+	width: 102px;
+	height: 117px;
+	margin-right: 10px;
+	background-size: 100% 100%;
+	z-index: 1000;
+	text-align: center;
+}
+
+.chip span {
+	position: relative;
+	font-family: bebas;
+}
+
+#chip_1 {
+	background-image: url('../img/chip_1.png');
+}
+
+#chip_2 {
+	background-image: url('../img/chip_2.png');
+}
+
+#chip_3 {
+	background-image: url('../img/chip_3.png');
+}
+
+#help_show {
+	background-image: url('../img/help_board.png');
+	display: none;
+	position: absolute;
+	left: 369px;
+	top: 471px;
+	width: 213px;
+	height: 129px;
+	color: white;
+	font-size: 35px;
+}
+
+#help_letter {
+	background-image: url('../img/help_letter.png');
+	position: absolute;
+	display: none;
+	left: 27px;
+    top: 60px;
+	width: 127px;
+	height: 19px;
+	z-index: 1000;
+}
+
+#help_show .change {
+	position: absolute;
+    left: 158px;
+    top: 54px;
+	color: #ddb324;
+	font-size: 28px;
+	font-style: italic;
+}
+
+
+.button {
+	position: absolute;
+/*	width: 82px;
+	height: 108px;*/
+	background-size: 100% 100%;
+	z-index: 100000;
+}
+
+#btn_spin {
+	left: 599px;
+	top: 480px;
+	/*background-image: url('../img/button_spin_normal.png');*/
+}
+
+/*#btn_spin:active {
+	background-image: url('../img/button_spin_hover.png');
+}
+
+#btn_spin.disable {
+	background-image: url('../img/button_spin_disable.png');
+}
+
+#btn_spin.disable:active {
+	background-image: url('../img/button_spin_disable.png');
+}*/
+
+#btn_rebet {
+	left: 696px;
+	top: 480px;
+	/*background-image: url('../img/button_rebet_normal.png');*/
+}
+
+/*#btn_rebet:active {
+	background-image: url('../img/button_rebet_hover.png');
+}
+
+#btn_rebet.disable {
+	background-image: url('../img/button_rebet_disable.png');
+}
+
+#btn_rebet.disable:active {
+	background-image: url('../img/button_rebet_disable.png');
+}
+*/
+
+#btn_auto_regame {
+	left: 795px;
+	top: 540px;
+}
+
+#btn_return {
+	left: 878px;
+	top: 480px;
+}
+
+#btn_regame {
+	left: 795px;
+	top: 480px;
+	/*background-image: url('../img/button_regame_normal.png');*/
+}
+
+/*#btn_regame:active {
+	background-image: url('../img/button_regame_hover.png');
+}
+
+#btn_regame.disable {
+	background-image: url('../img/button_regame_disable.png');
+}
+
+#btn_regame.disable:active {
+	background-image: url('../img/button_regame_disable.png');
+}*/
+
+#btn_clear {
+	left: 878px;
+	top: 540px;
+	/*background-image: url('../img/button_clearbet_normal.png');*/
+}
+
+/*#btn_clear:active {
+	background-image: url('../img/button_clearbet_hover.png');
+}
+
+#btn_clear.disable {
+	background-image: url('../img/button_clearbet_disable.png');
+}
+
+#btn_clear.disable:active {
+	background-image: url('../img/button_clearbet_disable.png');
+}*/
+
+#win_popup {
+	display: none;
+	position: absolute;
+	z-index: 10000;
+	width: 512px;
+	height: 227px;
+	left: 224px;
+	top: 186px;
+	background-image: url('../img/winpopup_back.png');
+	background-size: 100% 100%;
+	text-align: center;
+	font-size: 50px;
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(170,170,170,1)));
+	color: white;
+	text-shadow: 3px 3px 1px #000;
+	font-family: Bebas;
+}
+
+#win_title {
+	position: relative;
+	top: 40px;
+	display: block;
+}
+
+#win_amount {
+	position: relative;
+	top: 40px;
+}
+
+#loading_area {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: black;
+	text-align: center;
+	z-index: 1000000;
+}
+
+#loading_text {
+	font-size: 36px;
+	color: white;
+	margin-top: 30%;
+}
